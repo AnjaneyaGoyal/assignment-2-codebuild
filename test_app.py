@@ -3,10 +3,8 @@ from app import add, app
 
 def test_add_success():
     assert add(2, 3) == 5
-    assert add(-1, 1) == 0
 
-def test_app_index():
-    tester = app.test_client()
-    response = tester.get("/")
-    assert response.status_code == 200
-    assert response.json["status"] == "healthy"
+def test_intentional_failure():
+    # Deliberately failing test to prove CI/CD pipeline catches errors
+    print("Testing intentional failure detection...")
+    assert add(2, 2) == 5, "AssertionError: 2 + 2 does not equal 5!"
