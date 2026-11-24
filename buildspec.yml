@@ -1,0 +1,22 @@
+﻿version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo "=== Starting Build & Tests ==="
+      - python --version
+  build:
+    commands:
+      - pytest -v test_app.py
+  post_build:
+    commands:
+      - echo "=== Tests Completed Successfully on $(date) ==="
+
+artifacts:
+  files:
+    - '**/*'
